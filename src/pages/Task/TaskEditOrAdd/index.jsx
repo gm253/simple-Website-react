@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const TaskEditOrAdd = () => {
-   const [taskData, setTaskData] = useState({ title: "", description: "" });
+   const [taskData, setTaskData] = useState({ title: "", description: "", user: "" });
    const [taskList, setTaskList] = useState([]);
    const { id } = useParams();
    const navigate = useNavigate();
@@ -37,7 +37,7 @@ const TaskEditOrAdd = () => {
          setTaskList(storedData);
       }
    }, [id]);
-
+   const users = ['Select User', 'ReactJS'];
    return (
       <div className='mx-60 mt-10'>
          <div>
@@ -63,6 +63,22 @@ const TaskEditOrAdd = () => {
                placeholder="Task Description"
                onChange={itemHandler}
             />
+         </div>
+         <div>
+            <label htmlFor="UserList" className="block mb-2 text-sm font-medium text-gray-900 mt-5">Users</label>
+            <select
+               id='UserList'
+               name='user'
+               value={taskData.user}
+               onChange={itemHandler}
+               className="bg-gray-50 border border-gray-300 text-gray-50 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+               {users.map((user, index) => (
+                  <option key={index} value={user}>
+                     {user}
+                  </option>
+               ))}
+            </select>
          </div>
          <button
             onClick={saveTask}
