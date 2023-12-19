@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Headers from '../components/Headers';
 import Sidebar from '../components/Sidebar';
@@ -7,8 +7,18 @@ import AddOrEditTask from '../pages/Task/TaskEditOrAdd';
 import TaskList from '../pages/Task/TaskList';
 import UsersEditOrAdd from '../pages/Users/UsersEditOrAdd';
 import UserList from '../pages/Users/UserList';
+import Axios from 'axios';
+
 
 function Dashboard() {
+  useEffect(() => {
+    Axios.get('http://localhost:8080/api/').then((res) => {
+      console.log('====================================');
+      console.log(res);
+      console.log('====================================');
+      // return res.json();
+    })
+  }, []);
   return (
     <>
       <p className='text-gray-light'>Dashboard</p>
