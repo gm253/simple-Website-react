@@ -1,40 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
-const Table = () => {
-   let [TaskList, setTaskList] = useState([]);
+const UserList = () => {
+   let [UserList, setUserList] = useState([]);
 
    const navigate = useNavigate();
 
    const handleDelete = (indexdelete) => {
-      const filterdata = TaskList.filter((item, index) => index !== indexdelete)
+      const filterdata = UserList.filter((item, index) => index !== indexdelete)
       console.log("filterdata", filterdata);
-      setTaskList(filterdata);
-      localStorage.setItem('taskList', JSON.stringify(filterdata));
+      setUserList(filterdata);
+      localStorage.setItem('userlist', JSON.stringify(filterdata));
    }
 
    const handleEdit = (indexEdit) => {
-      navigate(`/AddOrEditTask/${indexEdit}`);
+      navigate(`/AddOrEditUser/${indexEdit}`);
    }
 
 
    useEffect(() => {
-      const data = JSON.parse(localStorage.getItem('taskList')) || [];
+      const data = JSON.parse(localStorage.getItem('userlist')) || [];
 
-      setTaskList(data)
+      setUserList(data)
    }, [])
    return (
       <div className="antialiased font-sans bg-gray-200">
          <div className=" mx-auto px-4 sm:px-8">
             <div className="py-8">
                <div>
-                  <h2 className="text-2xl font-semibold ">Task List</h2>
+                  <h2 className="text-2xl font-semibold ">User List</h2>
                </div>
                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                  <NavLink to="/AddOrEditTask">
+                  <NavLink to="/AddOrEditUser">
                      <button
                         type="button"
                         className="float-right hover:bg-gray-900 bg-gray-600 mb-4 rounded-md hover:rounded-md px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-                        Add Task
+                        Add User
                      </button>
                   </NavLink>
                   <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -60,7 +60,7 @@ const Table = () => {
                            </tr>
                         </thead>
                         <tbody className='bg-gray-light'>
-                           {TaskList.map((item, index) => {
+                           {UserList.map((item, index) => {
                               return (
                                  <tr key={index} className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <td className='px-6 py-2'>
@@ -105,4 +105,4 @@ const Table = () => {
    );
 };
 
-export default Table;
+export default UserList;
