@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-=======
 import React,{useEffect} from 'react';
->>>>>>> a017b9a2dd9d98015f25b0cd459122a4718cf272
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Axios from 'axios';
 // import Headers from '../components/Headers';
@@ -16,13 +12,6 @@ import Axios from 'axios';
 
 
 function Dashboard() {
-<<<<<<< HEAD
-  useEffect(async() => {
-    let data = await Axios.get('http://localhost:8080/api/')
-    console.log(data);
-    return 
-  }, [])
-=======
   useEffect(() => {
     Axios.get('http://localhost:8080/api/').then((res) => {
       console.log('====================================');
@@ -31,7 +20,6 @@ function Dashboard() {
       // return res.json();
     })
   }, []);
->>>>>>> a017b9a2dd9d98015f25b0cd459122a4718cf272
   return (
     <>
       <p className='text-gray-light'>Dashboard</p>
@@ -50,11 +38,6 @@ function Layout() {
         <div className='w-full bg-gray-200 h-screen'>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-<<<<<<< HEAD
-            <Route path="/getTask" element={<Table />} />
-            <Route path="/AddOrEditTask" element={<AddOrEditTask />} />
-            <Route path="/AddOrEditTask/:id" element={<AddOrEditTask />} />
-=======
             {/* Task Master */}
             <Route path="/getTask" element={<TaskList />} />
             <Route path="/AddOrEditTask" element={<AddOrEditTask />} />
@@ -65,7 +48,6 @@ function Layout() {
             <Route path="/AddOrEditUser" element={<UsersEditOrAdd />} />
             <Route path="/AddOrEditUser/:id" element={<UsersEditOrAdd />} />
 
->>>>>>> a017b9a2dd9d98015f25b0cd459122a4718cf272
           </Routes>
         </div>
       </div>
